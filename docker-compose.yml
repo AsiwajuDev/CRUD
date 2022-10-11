@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  crud-ddd.api:
+    image: ${DOCKER_REGISTRY-}cruddddapi
+    build:
+      context: .
+      dockerfile: CRUD-DDD.Api/Dockerfile
