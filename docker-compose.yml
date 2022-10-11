@@ -6,3 +6,19 @@ services:
     build:
       context: .
       dockerfile: CRUD-DDD.Api/Dockerfile
+    depends_on:
+      - crud-ddd.db
+    ports:
+      - "5000:80"
+      
+  
+  crud-ddd.db:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: mssql-db
+    hostname: mssql-db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123#
+    restart: unless-stopped
+    ports:
+      - "1433:1433"
