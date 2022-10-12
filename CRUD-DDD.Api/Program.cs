@@ -22,10 +22,6 @@ builder.Services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.L
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CRUD-DDD.Api", Version = "v1" });
-
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
 });
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -46,7 +42,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "CRUD-DDD.Api v1");
-        c.RoutePrefix = string.Empty;
     });
 }
 

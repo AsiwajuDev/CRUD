@@ -20,9 +20,9 @@ namespace CRUD_DDD.Api.Controllers
         [HttpGet("all")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
-        public IActionResult GetAllBooks()
+        public async Task<IActionResult> GetAllBooks()
         {
-            var result = _bookService.GetAllBooks();
+            var result = await _bookService.GetAllBooks();
             return Ok(result);
         }
 
@@ -30,9 +30,9 @@ namespace CRUD_DDD.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public IActionResult GetBookById(int id)
+        public async Task<IActionResult> GetBookById(int id)
         {
-            var obj = _bookService.GetBookById(id);
+            var obj = await _bookService.GetBookById(id);
             return Ok(obj);
         }
 
@@ -41,13 +41,13 @@ namespace CRUD_DDD.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
-        public IActionResult Create([FromBody] CreateBookDto bookDto, CancellationToken token)
+        public async Task<IActionResult> Create([FromBody] CreateBookDto bookDto, CancellationToken token)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var result = _bookService.CreateBook(bookDto, token);
+            var result = await _bookService.CreateBook(bookDto, token);
             return Ok(result);
         }
 
@@ -56,13 +56,13 @@ namespace CRUD_DDD.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
-        public IActionResult Update([FromBody] UpdateBookDto bookDto, CancellationToken token)
+        public async Task<IActionResult> Update([FromBody] UpdateBookDto bookDto, CancellationToken token)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var result = _bookService.UpdateBook(bookDto, token);
+            var result = await _bookService.UpdateBook(bookDto, token);
             return Ok(result);
         }
 
@@ -71,9 +71,9 @@ namespace CRUD_DDD.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Delete(int id, CancellationToken token)
+        public async Task<IActionResult> Delete(int id, CancellationToken token)
         {
-            var result = _bookService.DeleteBook(id, token);
+            var result = await _bookService.DeleteBook(id, token);
             return Ok(result);
         }
     }

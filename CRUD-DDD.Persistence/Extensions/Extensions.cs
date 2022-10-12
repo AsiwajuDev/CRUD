@@ -16,7 +16,7 @@ namespace CRUD_DDD.Persistence.Extensions
         public static void AddDatabaseServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IAppDbContext, AppDbContext>();
-            
+
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));

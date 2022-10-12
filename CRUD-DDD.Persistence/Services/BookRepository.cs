@@ -3,7 +3,7 @@ using CRUD_DDD.Application.Interfaces.Repositories;
 using CRUD_DDD.Domain.Books;
 using Microsoft.EntityFrameworkCore;
 
-namespace CRUD_DDD.Application.Repositories
+namespace CRUD_DDD.Persistence.Repositories
 {
     public class BookRepository : IBookRepository
     {

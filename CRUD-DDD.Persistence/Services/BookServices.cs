@@ -6,7 +6,7 @@ using CRUD_DDD.Application.Interfaces.Services;
 using CRUD_DDD.Domain.Books;
 using Microsoft.AspNetCore.Http;
 
-namespace CRUD_DDD.Application.Services
+namespace CRUD_DDD.Persistence.Services
 {
     public class BookServices : IBookService
     {
