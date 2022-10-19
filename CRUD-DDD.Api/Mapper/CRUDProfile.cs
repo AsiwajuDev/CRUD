@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CRUD_DDD.Application.Books.Dto;
+using CRUD_DDD.Application.Books.Models;
 using CRUD_DDD.Domain.Books;
 
 namespace CRUD_DDD.Api.Mapper
@@ -9,7 +10,8 @@ namespace CRUD_DDD.Api.Mapper
         public CRUDProfile()
         {
             CreateMap<CreateBookDto, Book>();
-            CreateMap<UpdateBookDto, Book>();            
+            CreateMap<UpdateBookDto, Book>();
+            CreateMap<Book, BookResponse>();
         }
     }
 }

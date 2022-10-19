@@ -49,15 +49,15 @@ namespace CRUD_DDD.Persistence.Contexts
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    var envName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-        //    IConfigurationRoot configuration = new ConfigurationBuilder()
-        //         .SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
-        //         .AddJsonFile("appsettings.json", optional: true)
-        //         .AddJsonFile($"appsettings.{envName}.json", optional: true)
-        //         .Build();
-        //    optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var envName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                 .SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
+                 .AddJsonFile("appsettings.json", optional: true)
+                 .AddJsonFile($"appsettings.{envName}.json", optional: true)
+                 .Build();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+        }
     }
 }

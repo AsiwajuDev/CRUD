@@ -28,17 +28,20 @@ namespace CRUD_DDD.Persistence.Repositories
 
         public async Task<IEnumerable<Book>> GetAllAsync()
         {
-            return await Task.Run(() => _context.Books.ToListAsync());
+            var books = await Task.Run(() => _context.Books.ToListAsync());
+            return books;
         }
 
         public async Task<Book> GetByIdAsync(int id)
         {
-            return await Task.Run(() => _context.Books.Where(x => x.Id == id).FirstOrDefault());
+            var book = await Task.Run(() => _context.Books.Where(x => x.Id == id).FirstOrDefault());
+            return book;
         }
 
         public async Task<Book> GetbyTitle(string title)
         {
-            return await Task.Run(() => _context.Books.Where(x => x.Title.ToLower() == title.ToLower()).FirstOrDefault());
+            var book = await Task.Run(() => _context.Books.Where(x => x.Title.ToLower() == title.ToLower()).FirstOrDefault());
+            return book;
         }
 
         public async Task<bool> UpdateAsync(Book book, CancellationToken token)
