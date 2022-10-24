@@ -46,7 +46,7 @@ namespace CRUD_DDD.Persistence.Repositories
 
         public async Task<bool> UpdateAsync(Book book, CancellationToken token)
         {
-            await Task.Run(() => _context.Books.Update(book));
+            await Task.Run(() => _context.Books.Update(book).State = EntityState.Modified);
             return await SaveAsync(token);
         }
 

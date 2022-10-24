@@ -23,7 +23,7 @@ namespace CRUD_DDD.Application.Services
             try
             {
                 var isExist = await _bookRepository.GetbyTitle(bookDto.Title);
-                if(isExist != null)
+                if (isExist != null)
                 {
                     response.ResponseMessage = "Book Already Exist";
                     response.ResponseCode = StatusCodes.Status409Conflict;
@@ -139,8 +139,14 @@ namespace CRUD_DDD.Application.Services
                     //response.Data = _mapper.Map<BookResponse>(book);
                 }
 
-                var updateObj = _mapper.Map<Book>(bookDto);
-                var result = await _bookRepository.UpdateAsync(updateObj, cancellationToken);
+                //var updateObj = _mapper.Map<Book>(bookDto);
+                book.Title = bookDto.Title;
+                book.Author = bookDto.Author;
+                book.Description = bookDto.Description;
+                book.Category = bookDto.Category;
+                book.ISBN = bookDto.ISBN;
+                book.Language = bookDto.Language;
+                var result = await _bookRepository.UpdateAsync(book, cancellationToken);
                 if (result)
                 {
                     response.ResponseCode = StatusCodes.Status204NoContent;
