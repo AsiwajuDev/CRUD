@@ -33,10 +33,10 @@ namespace CRUD_DDD.Persistence.Contexts
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.DateCreated = DateTime.Now;
+                        entry.Entity.DateCreated = DateTime.Now; // For the added case, I am setting the DateCreated property to the current DateTime.
                         break;
                     case EntityState.Modified:
-                        entry.Entity.LastUpdated = DateTime.Now;
+                        entry.Entity.LastUpdated = DateTime.Now;//For the modified case, I am setting the LastUpdated property to the current DateTime
                         break;
                 }
             }

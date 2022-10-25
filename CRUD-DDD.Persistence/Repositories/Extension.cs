@@ -11,7 +11,6 @@ namespace CRUD_DDD.Persistence.Repositories
     {
         public static void AddRepository(this IServiceCollection services)
         {
-            //services.AddTransient<IAppDbContext, AppDbContext>();
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IBookService, BookServices>();
         }

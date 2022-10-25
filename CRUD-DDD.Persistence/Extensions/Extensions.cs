@@ -15,11 +15,12 @@ namespace CRUD_DDD.Persistence.Extensions
     {
         public static void AddDatabaseServices(this IServiceCollection services, IConfiguration configuration)
         {           
-
+            // register the AppDbContext class as a service
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+            
             services.AddScoped<IAppDbContext, AppDbContext>();
         }
     }
